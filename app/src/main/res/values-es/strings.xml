@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Juego de adivinanzas</string>
+    <string name="action_settings">Configuración</string>
+    <string name="enter_a_number_between_1_and_100">Introduzca un número entre 1 y 100</string>
+    <string name="chakra_s_guessing_game">Chakra\'s Juego de adivinanzas</string>
+    <string name="guess">Supongo</string>
+</resources>
