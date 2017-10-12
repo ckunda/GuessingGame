@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,32 +34,26 @@ public class MainActivity extends AppCompatActivity {
             if (guess > theNumber) { // too high
                 message = guess + " was too high. Guess again!";
                 lblOutput.setText(message);
-                txtGuess.setText("");
-
             }
             else if (guess < theNumber) { // too low
                 message = guess + " was too low. Guess again!";
                 lblOutput.setText(message);
-                txtGuess.setText("");
-
             }
             else { // correct
                 message = guess + " was the right number. You win! Play again.";
                 lblOutput.setText(message);
-                txtGuess.setText("");
+             //   txtGuess.setText("");
                 newGame();
-
             }
         }
         catch (Exception ex) {
             message = "Please enter a whole number above. Guess again.";
             lblOutput.setText(message);
-
         }
-        finally { // hightlight the txtGuess text field
-
+        finally { // highlight the txtGuess text field
+            txtGuess.selectAll();
+            txtGuess.requestFocus();
         }
-
     }
 
     private void newGame() {
@@ -83,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                checkGuess();
            }
+        });
+
+        // set up the event listener for the input field
+        txtGuess.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                checkGuess();
+                return true;
+            }
         });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
